@@ -102,11 +102,9 @@ const [zoomScale, setZoomScale] = useState(1);
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {galleryItems.flatMap((item, itemIndex) => {
-            const isLarge = item.span === 'col-span-2'
-            
-            return item.images.map((imgSrc, imgIndex) => {
+        <div className="columns-1 md:columns-2 xl:columns-3 gap-6 [column-fill:balance]">
+          {galleryItems.flatMap((item, itemIndex) =>
+            item.images.map((imgSrc, imgIndex) => {
               const selectedData = {
                 ...item,
                 image: imgSrc,
@@ -123,28 +121,23 @@ const [zoomScale, setZoomScale] = useState(1);
                   onClick={() => {
                     setSelectedImage(selectedData)
                   }}
-                  className={`group relative bg-gradient-to-br from-dark-card to-dark-lighter/50 overflow-hidden cursor-pointer rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/5 hover:border-lime/20 ${
-                    isLarge ? 'md:col-span-2' : 'md:col-span-1'
-                  }`}
+                  className="group relative mb-6 break-inside-avoid bg-gradient-to-br from-dark-card to-dark-lighter/50 overflow-hidden cursor-pointer rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/5 hover:border-lime/20"
                 >
-                  {/* Image - object cover for full layout fill */}
                   <div className="w-full h-[280px] md:h-[350px] bg-dark-lighter relative overflow-hidden">
-                    <img 
-                      src={imgSrc} 
+                    <img
+                      src={imgSrc}
                       alt={`${item.alt} - Page ${imgIndex + 1}`}
                       className="absolute inset-0 w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-700"
                       loading="lazy"
                     />
-                    
-                    {/* Hover Overlay */}
+
                     <div className="absolute inset-0 bg-dark/0 group-hover:bg-dark/40 transition-colors duration-300 pointer-events-none flex items-center justify-center">
-                       <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 bg-lime text-dark px-4 py-2 rounded-full font-accent text-xs uppercase tracking-widest font-bold shadow-lg shadow-lime/25">
-                         View Full Page
-                       </div>
+                      <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 bg-lime text-dark px-4 py-2 rounded-full font-accent text-xs uppercase tracking-widest font-bold shadow-lg shadow-lime/25">
+                        View Full Page
+                      </div>
                     </div>
                   </div>
 
-                  {/* Caption Area */}
                   <div className="p-6 bg-dark-card/90 group-hover:bg-dark-lighter/90 backdrop-blur-sm transition-colors duration-300">
                     <div className="flex justify-between items-start mb-2 gap-4">
                       <h3 className="text-white font-display text-lg md:text-xl font-bold group-hover:text-lime transition-colors duration-300">
@@ -163,7 +156,7 @@ const [zoomScale, setZoomScale] = useState(1);
                 </motion.div>
               )
             })
-          })}
+          )}
         </div>
 
       </div>

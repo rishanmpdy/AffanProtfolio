@@ -16,9 +16,9 @@ export default {
           border: '#333333',
         },
         lime: {
-          DEFAULT: '#E3FF04', // Vibrant neon yellow/lime
-          light: '#EEFF5C',
-          bright: '#F2FF7A',
+          DEFAULT: '#FF3B30', // Vibrant red accent
+          light: '#FF6B61',
+          bright: '#FF8A80',
         },
         silver: {
           DEFAULT: '#A1A1AA',
